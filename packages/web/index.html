@@ -21,6 +21,21 @@
           var fades = { none: '0', subtle: '0.35', full: '0.7' };
           if (fades[d.fadeLevel] !== undefined)
             document.documentElement.style.setProperty('--fade-max', fades[d.fadeLevel]);
+          var fontUrls = {
+            'ibm-plex':      'https://fonts.bunny.net/css?family=ibm-plex-sans:400,500,600,700|ibm-plex-serif:400,600&display=swap',
+            'atkinson-lora': 'https://fonts.bunny.net/css?family=atkinson-hyperlegible:400,700|lora:400,600&display=swap'
+          };
+          if (d.fontPairing && d.fontPairing !== 'system' && fontUrls[d.fontPairing]) {
+            document.documentElement.setAttribute('data-font', d.fontPairing);
+            var pc = document.createElement('link');
+            pc.rel = 'preconnect';
+            pc.href = 'https://fonts.bunny.net';
+            document.head.appendChild(pc);
+            var fl = document.createElement('link');
+            fl.rel = 'stylesheet';
+            fl.href = fontUrls[d.fontPairing];
+            document.head.appendChild(fl);
+          }
         } catch (e) {}
       })();
     </script>

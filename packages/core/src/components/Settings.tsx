@@ -3,7 +3,7 @@ import type { Category, Source, StreamAdapter } from '../types.js';
 import { HALF_LIVES } from '../riverEngine.js';
 import {
   loadDisplayPrefs, saveDisplayPrefs, applyDisplayPrefs,
-  ACCENT_OPTIONS, EXPIRY_OPTIONS,
+  ACCENT_OPTIONS, EXPIRY_OPTIONS, FONT_PAIRING_OPTIONS,
   type TextSize, type FadeLevel, type ExpiryDays, type DisplayPrefs,
 } from '../displayPrefs.js';
 import type { MuteEntry } from '../mutedSources.js';
@@ -458,6 +458,20 @@ export function Settings({ sources, categories, adapter, onUpdate, onBulkVelocit
                   onExpiryChange?.(value);
                 }}
                 aria-pressed={display.expiryDays === value}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+
+          <span class={styles.displayLabel}>Font</span>
+          <div class={styles.tiers} role="group" aria-label="Font pairing">
+            {FONT_PAIRING_OPTIONS.map(({ id, label }) => (
+              <button
+                key={id}
+                class={`${styles.tierBtn} ${display.fontPairing === id ? styles.active : ''}`}
+                onClick={() => { const next = { ...display, fontPairing: id }; setDisplay(next); saveDisplayPrefs(next); }}
+                aria-pressed={display.fontPairing === id}
               >
                 {label}
               </button>

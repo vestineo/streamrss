@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.9.9
+
+### Display
+
+- **Font pairings** — new Font setting in the Display panel with three options: System (default, no network cost), IBM Plex (IBM Plex Sans + IBM Plex Serif), and Atkinson (Atkinson Hyperlegible + Lora). Fonts load lazily from Bunny Fonts only when a non-default pairing is chosen. The selection persists across sessions and is included in settings export/import.
+- **Wider desktop layout** — the content column now adapts to wider viewports: 760px at ≥1024px and 820px at ≥1440px, up from the fixed 680px. A single `--column-width` CSS variable controls all five layout containers (river, filter bar, settings, header, reading view) so they widen in lockstep.
+
 ## 0.9.8
 
 ### Performance

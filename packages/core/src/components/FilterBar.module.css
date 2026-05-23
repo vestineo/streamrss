@@ -1,5 +1,5 @@
 .bar {
-  max-width: 680px;
+  max-width: var(--column-width);
   margin: 0 auto;
   padding: 0.5rem 1rem;
   display: flex;

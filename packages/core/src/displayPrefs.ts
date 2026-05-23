@@ -1,16 +1,26 @@
+import { ensureFontLink } from './fontLoader.js';
+
 const DISPLAY_KEY = 'stream-display';
 
 export type TextSize = 'small' | 'default' | 'large';
 export type FadeLevel = 'none' | 'subtle' | 'full';
 export type AccentColor = 'frost' | 'yellow' | 'green' | 'berry';
 export type ExpiryDays = 0 | 1 | 3 | 7 | 14 | 30;  // 0 = never
+export type FontPairing = 'system' | 'ibm-plex' | 'atkinson-lora';
 
 export interface DisplayPrefs {
   textSize: TextSize;
   fadeLevel: FadeLevel;
   accentColor: AccentColor;
   expiryDays: ExpiryDays;
+  fontPairing: FontPairing;
 }
+
+export const FONT_PAIRING_OPTIONS: Array<{ id: FontPairing; label: string }> = [
+  { id: 'system',        label: 'System' },
+  { id: 'ibm-plex',     label: 'IBM Plex' },
+  { id: 'atkinson-lora', label: 'Atkinson' },
+];
 
 export const TEXT_SIZE_PX: Record<TextSize, number> = { small: 14, default: 16, large: 18 };
 export const FADE_MAX: Record<FadeLevel, number> = { none: 0, subtle: 0.35, full: 0.7 };
@@ -31,7 +41,7 @@ export const EXPIRY_OPTIONS: Array<{ value: ExpiryDays; label: string }> = [
   { value: 30, label: '30 days' },
 ];
 
-export const DEFAULTS: DisplayPrefs = { textSize: 'default', fadeLevel: 'full', accentColor: 'frost', expiryDays: 0 };
+export const DEFAULTS: DisplayPrefs = { textSize: 'default', fadeLevel: 'full', accentColor: 'frost', expiryDays: 0, fontPairing: 'system' };
 
 export function loadDisplayPrefs(): DisplayPrefs {
   try {
@@ -49,4 +59,10 @@ export function applyDisplayPrefs(prefs: DisplayPrefs): void {
   document.documentElement.style.fontSize = `${TEXT_SIZE_PX[prefs.textSize]}px`;
   document.documentElement.style.setProperty('--fade-max', String(FADE_MAX[prefs.fadeLevel]));
   document.documentElement.setAttribute('data-accent', prefs.accentColor);
+  if (prefs.fontPairing === 'system') {
+    document.documentElement.removeAttribute('data-font');
+  } else {
+    document.documentElement.setAttribute('data-font', prefs.fontPairing);
+    ensureFontLink(prefs.fontPairing);
+  }
 }

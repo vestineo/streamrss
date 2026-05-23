@@ -1,5 +1,5 @@
 .river {
-  max-width: 680px;
+  max-width: var(--column-width);
   margin: 0 auto;
   padding: 1rem 1rem 5rem; /* bottom padding keeps last card above toast */
 }
