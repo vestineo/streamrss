@@ -48,6 +48,17 @@ function IconClose() {
   );
 }
 
+function IconGenericFavicon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.25"/>
+      <path d="M8 1.5C8 1.5 5.5 4 5.5 8s2.5 6.5 2.5 6.5" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+      <path d="M8 1.5C8 1.5 10.5 4 10.5 8s-2.5 6.5-2.5 6.5" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+      <line x1="1.5" y1="8" x2="14.5" y2="8" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+    </svg>
+  );
+}
+
 function stripHtml(html: string): string {
   return html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
 }
@@ -150,8 +161,8 @@ export function RiverCard({
           ) : (
             <span class={styles.favicon} data-error="" />
           )}
-          <span class={styles.faviconFallback} aria-hidden="true">
-            {source.title.charAt(0)}
+          <span class={styles.faviconFallback}>
+            <IconGenericFavicon />
           </span>
         </div>
 

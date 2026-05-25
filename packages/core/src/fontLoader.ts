@@ -1,7 +1,7 @@
 import type { FontPairing } from './displayPrefs.js';
 
 const BUNNY_URLS: Partial<Record<FontPairing, string>> = {
-  'ibm-plex':      'https://fonts.bunny.net/css?family=ibm-plex-sans:400,500,600,700|ibm-plex-serif:400,600&display=swap',
+  'ibm-plex':      'https://fonts.bunny.net/css?family=ibm-plex-sans:400,500,600,700&display=swap',
   'atkinson-lora': 'https://fonts.bunny.net/css?family=atkinson-hyperlegible:400,700|lora:400,600&display=swap',
 };
 

@@ -112,20 +112,12 @@
   display: none;
 }
 
-/* Letter fallback shown when favicon fails */
+/* Generic icon fallback shown when favicon fails or is absent */
 .faviconFallback {
   display: none;
   width: 16px;
   height: 16px;
-  border-radius: 2px;
-  background: var(--border);
   color: var(--text-muted);
-  font-family: var(--font-sans);
-  font-size: 0.5625rem;
-  font-weight: 700;
-  line-height: 16px;
-  text-align: center;
-  text-transform: uppercase;
 }
 
 /* Show fallback when img errored */

@@ -82,7 +82,7 @@
 /* Font pairing overrides — UI font (--font-sans) + reading font (--font-serif) */
 [data-font="ibm-plex"] {
   --font-sans:  'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-serif: 'IBM Plex Serif', Georgia, serif;
+  --font-serif: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 [data-font="atkinson-lora"] {

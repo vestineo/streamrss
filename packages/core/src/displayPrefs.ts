@@ -19,7 +19,7 @@ export interface DisplayPrefs {
 export const FONT_PAIRING_OPTIONS: Array<{ id: FontPairing; label: string }> = [
   { id: 'system',        label: 'System' },
   { id: 'ibm-plex',     label: 'IBM Plex' },
-  { id: 'atkinson-lora', label: 'Atkinson' },
+  { id: 'atkinson-lora', label: 'Atkinson Hyperlegible' },
 ];
 
 export const TEXT_SIZE_PX: Record<TextSize, number> = { small: 14, default: 16, large: 18 };
