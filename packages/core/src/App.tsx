@@ -189,10 +189,10 @@ export function App() {
     setState({ status: 'connect' });
   }, []);
 
-  // Apply saved display prefs on mount (text size, fade intensity, accent colour)
+  // Apply saved display prefs on mount and whenever returning from settings
   useEffect(() => {
     applyDisplayPrefs(loadDisplayPrefs());
-  }, []);
+  }, [state.status]);
 
   // Live score recalculation every 60s — pauses when tab is hidden
   useEffect(() => {

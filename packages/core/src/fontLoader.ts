@@ -7,6 +7,14 @@ const BUNNY_URLS: Partial<Record<FontPairing, string>> = {
 
 const injected = new Set<FontPairing>();
 
+// Pre-seed from any <link> tags the bootstrap script injected before this module loaded
+for (const [pairing, url] of Object.entries(BUNNY_URLS) as Array<[FontPairing, string]>) {
+  if (typeof document !== 'undefined' &&
+      document.head.querySelector(`link[rel="stylesheet"][href="${url}"]`)) {
+    injected.add(pairing as FontPairing);
+  }
+}
+
 export function ensureFontLink(pairing: FontPairing): void {
   if (pairing === 'system' || injected.has(pairing)) return;
 
