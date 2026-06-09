@@ -148,3 +148,10 @@
 .statusPills.solo {
   margin-left: auto;
 }
+
+@media (max-width: 380px) {
+  .bar {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}

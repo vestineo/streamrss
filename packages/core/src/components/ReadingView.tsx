@@ -95,6 +95,8 @@ export function ReadingView({ article, source, now, isSaved, onSave, onClose }: 
   // Close on Escape + focus trap; return focus to the triggering element on close
   useEffect(() => {
     const trigger = document.activeElement as HTMLElement | null;
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
     const handler = (e: KeyboardEvent) => {
       if (e.key === 'Escape') { e.preventDefault(); onClose(); return; }
       if (e.key === 'Tab' && overlayRef.current) {
@@ -114,6 +116,7 @@ export function ReadingView({ article, source, now, isSaved, onSave, onClose }: 
     first?.focus();
     return () => {
       window.removeEventListener('keydown', handler);
+      document.body.style.overflow = originalOverflow;
       trigger?.focus();
     };
   }, [onClose]);
@@ -170,7 +173,7 @@ export function ReadingView({ article, source, now, isSaved, onSave, onClose }: 
               title={copied ? 'Copied!' : 'Share'}
             >
               {copied ? (
-                <><IconCheck /> Copied</>
+                <><IconCheck /><span class={styles.shareBtnText}> Copied</span></>
               ) : (
                 <>
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" aria-hidden="true" class={styles.shareBtnIcon}>
@@ -180,7 +183,7 @@ export function ReadingView({ article, source, now, isSaved, onSave, onClose }: 
                     <line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/>
                     <line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/>
                   </svg>
-                  Share
+                  <span class={styles.shareBtnText}>Share</span>
                 </>
               )}
             </button>
@@ -200,7 +203,7 @@ export function ReadingView({ article, source, now, isSaved, onSave, onClose }: 
               target="_blank"
               rel="noopener noreferrer"
             >
-              Open original <IconExternalLink />
+              <span class={styles.shareBtnText}>Open original</span> <IconExternalLink />
             </a>
           </div>
         </div>

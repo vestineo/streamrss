@@ -139,6 +139,10 @@
   min-width: 0;
 }
 
+.time {
+  flex-shrink: 0;
+}
+
 .dot {
   font-size: 0.375rem;
   color: var(--border);
@@ -165,6 +169,7 @@
   font-size: 1.0625rem;
   line-height: 1.7;
   color: var(--text);
+  overflow-wrap: break-word;
 }
 
 .body p       { margin: 0 0 1.1em; }
@@ -185,3 +190,18 @@
 }
 .body ul, .body ol { padding-left: 1.5em; margin: 0 0 1.1em; }
 .body li      { margin-bottom: 0.25em; }
+
+@media (max-width: 400px) {
+  .toolbar {
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+
+  .toolbarRight {
+    gap: 0.25rem;
+  }
+
+  .shareBtnText {
+    display: none;
+  }
+}

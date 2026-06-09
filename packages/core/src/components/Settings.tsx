@@ -384,11 +384,11 @@ export function Settings({ sources, categories, adapter, onUpdate, onBulkVelocit
     }
   };
 
-  const filtered = query.trim()
+  const filtered = useMemo(() => query.trim()
     ? sources.filter(s => s.title.toLowerCase().includes(query.toLowerCase()))
-    : sources;
+    : sources, [sources, query]);
 
-  const sorted = [...filtered].sort((a, b) => a.title.localeCompare(b.title));
+  const sorted = useMemo(() => [...filtered].sort((a, b) => a.title.localeCompare(b.title)), [filtered]);
 
   return (
     <div class={styles.wrap}>

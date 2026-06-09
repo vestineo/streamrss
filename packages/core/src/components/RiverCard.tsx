@@ -138,6 +138,7 @@ export function RiverCard({
       class={`${styles.card} ${showCopied ? styles.cardCopied : ''}`}
       style={{ ['--card-age' as string]: cardAge.toFixed(3) } as never}
       aria-current={isFocused ? 'true' : undefined}
+      tabIndex={isFocused ? 0 : -1}
       aria-label={article.title}
     >
       {showCopied && (
@@ -259,9 +260,9 @@ export function RiverCard({
           </button>
 
           {preview && (
-            <button class={styles.preview} onClick={() => onOpen(article.id)} aria-hidden="true" tabIndex={-1}>
+            <span class={styles.preview} onClick={() => onOpen(article.id)}>
               {preview}
-            </button>
+            </span>
           )}
         </div>
 

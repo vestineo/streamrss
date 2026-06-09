@@ -92,6 +92,8 @@
   align-items: center;
   gap: 0.375rem;
   margin-bottom: 0.25rem;
+  flex-wrap: wrap;
+  min-width: 0;
 }
 
 .faviconWrap {
@@ -193,6 +195,7 @@
   display: flex;
   align-items: center;
   gap: 0.25rem;
+  flex-wrap: wrap;
 }
 
 .muteLabel {

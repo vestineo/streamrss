@@ -1,5 +1,36 @@
 # Changelog
 
+## 1.0.0
+
+### Accessibility
+
+- **Cards are now Tab-focusable** — the focused `<article>` gets `tabindex="0"` so keyboard users who don't use j/k navigation can still reach individual cards via Tab.
+- **Touch targets expanded** — Settings tier buttons and UndoToast undo button now have 44×44px hit areas via `::after` pseudo-element expansion, meeting WCAG 2.5.5 (Pointer Size).
+- **KeyboardHelp panel no longer overflows** — `min-width` now uses `min(300px, 90vw)` so the panel fits on screens as narrow as 280px.
+- **ReadingView overlay blocks background scroll** — `body` overflow is set to `hidden` when the reading overlay is open, restored on close.
+
+### Responsive Design
+
+- **Global overflow safety net** — `html, body` now have `overflow-x: hidden` to prevent any single element from causing page-level horizontal scroll.
+- **Article body wraps long words** — `overflow-wrap: break-word` on `.body` prevents long URLs and unbroken strings from causing horizontal scroll.
+- **ReadingView toolbar adapts on narrow screens** — share and external link button text hides below 400px, icon-only mode.
+- **RiverCard header and mute menu wrap** — `flex-wrap: wrap` on `.header` and `.muteMenu` prevents overflow on narrow screens.
+- **FilterBar mobile padding** — padding reduces at 380px breakpoint, matching River and ReadingView.
+- **ReadingView time text won't compress** — `flex-shrink: 0` on `.time` prevents font compression on narrow meta rows.
+
+### Performance
+
+- **Settings filter and sort memoized** — `filtered` and `sorted` in Settings are now wrapped in `useMemo`, eliminating recomputation on every keystroke.
+- **useRiver keyboard listener simplified** — dependency array reduced to `[]` since the handler reads from `stateRef.current` (stale-ref pattern).
+
+### Theming
+
+- **LoadingView and ErrorView use CSS tokens** — hard-coded `680px` replaced with `var(--column-width)`, hard-coded `57px` replaced with `var(--header-height)`.
+
+### Code Quality
+
+- **Preview button semantically corrected** — changed from `aria-hidden` `<button>` to `<span>`, removing the misleading DOM structure.
+
 ## 0.9.9
 
 ### Display

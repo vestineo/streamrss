@@ -539,7 +539,7 @@ export function App() {
                 onImported={handleImported}
                 mutedEntries={mutedEntries}
                 onUnmute={handleUnmute}
-                suggestions={generateSuggestions(state.sources)}
+                suggestions={suggestions}
                 onApplySuggestion={(sourceId, tier) => {
                   handleVelocityUpdate(sourceId, tier);
                   dismissSuggestion(sourceId);
@@ -601,7 +601,7 @@ function MigrationBanner({
 
 function LoadingView() {
   return (
-    <div role="status" aria-label="Loading your stream" style={{ maxWidth: '680px', margin: '0 auto', padding: '1rem 1rem 5rem' }}>
+    <div role="status" aria-label="Loading your stream" style={{ maxWidth: 'var(--column-width)', margin: '0 auto', padding: '1rem 1rem 5rem' }}>
       {[0, 1, 2, 3, 4].map(i => (
         <SkeletonCard key={i} />
       ))}
@@ -653,7 +653,7 @@ function ErrorView({ message, onRetry }: ErrorViewProps) {
       alignItems: 'center',
       justifyContent: 'center',
       gap: '1rem',
-      minHeight: 'calc(100vh - 57px)',
+      minHeight: 'calc(100vh - var(--header-height))',
       padding: '2rem',
       fontFamily: 'var(--font-sans)',
       color: 'var(--text-muted)',

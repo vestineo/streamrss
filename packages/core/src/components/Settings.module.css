@@ -205,6 +205,7 @@
 }
 
 .tierBtn {
+  position: relative;
   padding: 0.1875rem 0.375rem;
   font-family: var(--font-sans);
   font-size: 0.6875rem;
@@ -216,6 +217,13 @@
   cursor: pointer;
   transition: background var(--transition), color var(--transition), border-color var(--transition);
   white-space: nowrap;
+}
+
+/* Expand touch target to 44px without affecting layout */
+.tierBtn::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
 }
 
 .tierBtn:hover {

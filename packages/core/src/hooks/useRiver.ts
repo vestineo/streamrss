@@ -170,7 +170,7 @@ export function useRiver(
 
     window.addEventListener('keydown', handler);
     return () => window.removeEventListener('keydown', handler);
-  }, [dismiss, save, undo, onOpen, shareItem]);
+  }, []);
 
   return { items, focusedIndex, pendingUndo: pendingUndo ? { article: pendingUndo.scored.article } : null, dismiss, save, undo, openItem, shareItem };
 }
